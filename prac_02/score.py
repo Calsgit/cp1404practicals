@@ -3,10 +3,13 @@ CP1404/CP5632 - Practical
 Program to determine score status
 """
 
+from random import randint
 
 def main():
     score = float(input("Enter score: "))
     print(determine_score_category(score))
+
+    print(determine_score_category(randint(0,100)))
 
 
 def determine_score_category(score):
