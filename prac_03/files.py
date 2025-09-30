@@ -14,12 +14,18 @@ infile.close()
 # 17, 42, 400
 # Write code that opens numbers.txt, reads only the first two numbers, adds them together, and prints the result
 outfile = open("numbers.txt", 'w')
-outfile.write("17\n42\n100")
+outfile.write("17\n42\n400")
 outfile.close()
 
 infile = open("numbers.txt", 'r')
 first_number = int(infile.readline().strip())
 second_number = int(infile.readline().strip())
 print(first_number + second_number)
+infile.close()
 
 # 4. Write a fourth block of code that prints the total for all lines in numbers.txt
+infile = open("numbers.txt", 'r')
+total = 0
+for number in infile.readlines():
+    total += int(number.strip())
+print(sum)
