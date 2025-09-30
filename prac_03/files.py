@@ -28,4 +28,4 @@ infile = open("numbers.txt", 'r')
 total = 0
 for number in infile.readlines():
     total += int(number.strip())
-print(sum)
+print(total)
