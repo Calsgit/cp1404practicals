@@ -7,11 +7,19 @@ outfile.close()
 # 2. In the same file, write code that opens name.txt and reads the same then prints
 infile = open("name.txt", 'r')
 name = infile.readline()
-print(name)
+print(f"Hi {name}!")
 infile.close()
 
 # 3. Create a text file called numbers.txt and save it in your directory. Put the following three numbers on separate lines in the file and save it:
 # 17, 42, 400
 # Write code that opens numbers.txt, reads only the first two numbers, adds them together, and prints the result
+outfile = open("numbers.txt", 'w')
+outfile.write("17\n42\n100")
+outfile.close()
+
+infile = open("numbers.txt", 'r')
+first_number = int(infile.readline().strip())
+second_number = int(infile.readline().strip())
+print(first_number + second_number)
 
 # 4. Write a fourth block of code that prints the total for all lines in numbers.txt
