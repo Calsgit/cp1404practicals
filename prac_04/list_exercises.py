@@ -32,6 +32,7 @@ def print_information(numbers):
 
 
 def is_authorised(username):
+    """Check whether username is in list of authorised usernames"""
     usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface',
                  'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer',
                  'bob']
