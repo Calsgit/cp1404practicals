@@ -1,6 +1,11 @@
 def main():
-    numbers = get_numbers(5)
-    print_information(numbers)
+    # numbers = get_numbers(5)
+    # print_information(numbers)
+    username = input("Username: ")
+    if is_authorised(username):
+        print("Access Granted")
+    else:
+        print("Access Denied")
 
 
 def get_numbers(number_of_numbers):
@@ -25,5 +30,11 @@ def print_information(numbers):
     average = total / len(numbers)
     print(f"The average of the numbers is {average}")
 
+
+def is_authorised(username):
+    usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface',
+                 'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer',
+                 'bob']
+    return username in usernames
 
 main()
