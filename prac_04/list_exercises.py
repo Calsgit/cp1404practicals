@@ -1,11 +1,6 @@
-def main():
-    # numbers = get_numbers(5)
-    # print_information(numbers)
-    username = input("Username: ")
-    if is_authorised(username):
-        print("Access Granted")
-    else:
-        print("Access Denied")
+def first_exercise():
+    numbers = get_numbers(5)
+    print_information(numbers)
 
 
 def get_numbers(number_of_numbers):
@@ -31,6 +26,14 @@ def print_information(numbers):
     print(f"The average of the numbers is {average}")
 
 
+def second_exercise():
+    username = input("Username: ")
+    if is_authorised(username):
+        print("Access Granted")
+    else:
+        print("Access Denied")
+
+
 def is_authorised(username):
     """Check whether username is in list of authorised usernames"""
     usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface',
@@ -38,4 +41,6 @@ def is_authorised(username):
                  'bob']
     return username in usernames
 
-main()
+
+first_exercise()
+second_exercise()
