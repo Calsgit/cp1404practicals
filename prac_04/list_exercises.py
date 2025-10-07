@@ -1,14 +1,18 @@
 def first_exercise():
-    numbers = get_numbers(5)
+    numbers = get_numbers()
     print_information(numbers)
 
 
-def get_numbers(number_of_numbers):
+def get_numbers():
     """Prompt the user for a specific number of integers"""
     numbers = []
-    for i in range(number_of_numbers):
-        number = int(input("Number: "))
+    count = 1
+    number = 0
+    while number >= 0:
+        number = int(input(f"Number {count}: "))
         numbers.append(number)
+        count += 1
+    # Technically, the practice question does not state anything about not parsing the negative number at the end of the list
     return numbers
 
 
