@@ -1,7 +1,7 @@
 """
 Wimbledon
 Estimated: 15 min
-Elapsed:
+Elapsed: 25 min
 """
 import csv
 
@@ -10,9 +10,8 @@ FILENAME = "wimbledon.csv"
 
 def main():
     champion_to_number_of_wins, champion_country = process_file()
-    print(champion_to_number_of_wins)
     display_champions(champion_to_number_of_wins)
-    display_countries(champion_to_number_of_wins)
+    display_countries(champion_country)
 
 
 def process_file():
@@ -33,11 +32,18 @@ def process_file():
 
 def display_champions(champion_to_number_of_wins):
     """Display each champion and the number of wins accrued"""
-    pass
+    for champion in champion_to_number_of_wins:
+        print(champion, champion_to_number_of_wins[champion])
 
 
 def display_countries(champion_country):
     """Display all countries assigned to a champion"""
-    pass
+    countries = []
+    for champion, country in champion_country:
+        if country not in countries:
+            countries.append(country)
+    print("These 12 countries have won Wimbledon:")
+    print(", ".join(countries))
+
 
 main()
