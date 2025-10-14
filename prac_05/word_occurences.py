@@ -7,7 +7,7 @@ def main():
 def count_words_in_string(text):
     """Calculate the amount of times each word is used in a given string"""
     word_to_count = {}
-    words = text.split(" ")
+    words = sorted(text.split(" "))
     for word in words:
         try:
             word_to_count[word] += 1
