@@ -17,7 +17,11 @@ def main():
 
 def extract_name(email):
     """Extract the most likely name from an email, otherwise ask the user for a name if this isn't the ideal name"""
-    return ""
+    name = email.split('@')[0].replace('.', ' ').title()
+    name_satisfaction = input(f"Is your name {name}? (Y/n) ").upper()
+    if name_satisfaction not in ("Y", ""):
+        name = input("Name: ")
+    return name
 
 
 def display_dictionary_items(key_to_value):
