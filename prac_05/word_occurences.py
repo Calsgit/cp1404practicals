@@ -15,10 +15,12 @@ def count_words_in_string(text):
             word_to_count[word] = 1
     return word_to_count
 
+
 def display_dictionary_items(key_to_value):
     """Run through and print each dictionary key and its value"""
     max_length = max(len(key) for key in key_to_value)
     for key in key_to_value:
         print(f"{key:{max_length}} : {key_to_value[key]}")
+
 
 main()
