@@ -43,7 +43,7 @@ def display_countries(champion_country):
         if country not in countries:
             countries.append(country)
     print("These 12 countries have won Wimbledon:")
-    print(", ".join(countries))
+    print(", ".join(sorted(countries)))
 
 
 main()
