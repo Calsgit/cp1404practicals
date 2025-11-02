@@ -34,7 +34,8 @@ def display_guitars(guitars):
     print("These are my guitars:")
     for i, guitar in enumerate(guitars, 1):
         vintage_string = "(vintage)" if guitar.is_vintage() else ""
-        print(f"Guitar {i}: {guitar.name:>{max_name_length}} ({guitar.year:>4}), worth $ {guitar.cost:>{max_cost_length},.2f} {vintage_string}")
+        print(
+            f"Guitar {i}: {guitar.name:>{max_name_length}} ({guitar.year:>4}), worth $ {guitar.cost:>{max_cost_length},.2f} {vintage_string}")
 
 
 main()
