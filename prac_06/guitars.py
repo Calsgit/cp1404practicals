@@ -1,6 +1,6 @@
 """
 Estimated time (for guitar, guitar_test, guitars): 25 min
-Elapsed time: 30 min
+Elapsed time: 40 min
 """
 from guitar import Guitar
 
