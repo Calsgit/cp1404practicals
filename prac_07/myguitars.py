@@ -22,7 +22,6 @@ def get_guitars_from_file():
     """Open specified file and extract csv data to create a list of guitar objects."""
     guitars = []
     with open(GUITARS_FILE) as in_file:
-        in_file.readline()
         for line in in_file:
             parts = line.strip().split(',')
             guitars.append(Guitar(parts[0], int(parts[1]), float(parts[2])))
