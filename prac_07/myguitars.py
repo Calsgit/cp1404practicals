@@ -57,7 +57,8 @@ def save_guitars(guitars):
     """Save all stored guitars to the specified file."""
     with open(GUITARS_FILE, 'w') as out_file:
         for guitar in guitars:
-            guitar_string = f"{guitar.name},{guitar.year},{guitar.cost}\n"
+            end_of_file_string = "" if guitar == guitars[-1] else "\n"
+            guitar_string = f"{guitar.name},{guitar.year},{guitar.cost}{end_of_file_string}"
             out_file.write(guitar_string)
 
 
