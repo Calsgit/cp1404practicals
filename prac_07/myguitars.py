@@ -9,7 +9,7 @@ IN_FILE = "guitars.csv"
 
 def main():
     print("My guitars!")
-    guitars = get_guitars_from_file()
+    guitars = get_guitars_from_file().sort()
     display_guitars(guitars)
 
 
