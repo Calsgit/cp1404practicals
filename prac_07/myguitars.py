@@ -23,6 +23,20 @@ def get_guitars_from_file():
             guitars.append(Guitar(parts[0], int(parts[1]), float(parts[2])))
     return guitars
 
+def get_guitars_from_user():
+    """Repeatedly prompts user for guitar information until a blank name is entered."""
+    guitars = []
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        guitar = Guitar(name, year, cost)
+        guitars.append(guitar)
+        print(guitar, "added.")
+        name = input("Name: ")
+    print()
+    return guitars
+
 
 def display_guitars(guitars):
     """Loop through a list of guitars and display their information."""
