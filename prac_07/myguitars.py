@@ -1,6 +1,6 @@
 """
 Estimated time (prac 07): 30 min
-Elapsed time: TODO: Elapsed time
+Elapsed time: 35 min?
 """
 from guitar import Guitar
 
