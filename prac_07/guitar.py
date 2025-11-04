@@ -17,6 +17,9 @@ class Guitar:
     def __str__(self):
         return f"{self.name} ({self.year}) : ${self.cost:,.2f}"
 
+    def __lt__(self, other):
+        return self.year < other.year
+
     def get_age(self):
         """Get the age of the guitar based on the year it was made."""
         return datetime.date.today().year - self.year
