@@ -1,7 +1,7 @@
 class Project:
     """Defines a project."""
 
-    def __init__(self, name, start_date, priority=1, cost_estimate=0.0, completion_percentage=0):
+    def __init__(self, name, start_date, priority=1, cost_estimate=0.00, completion_percentage=0):
         """Set definitions for the class."""
         self.name = name
         self.start_date = start_date
@@ -11,4 +11,4 @@ class Project:
 
     def __repr__(self):
         """Represent class as a string."""
-        return f"Project {self.name}, start: {self.start_date}, priority {self.priority}, estimate: ${self.cost_estimate:.,2f}, completion: {self.completion_percentage}%"
+        return f"Project {self.name}, start: {self.start_date}, priority {self.priority}, estimate: ${self.cost_estimate:.2f}, completion: {self.completion_percentage}%"
