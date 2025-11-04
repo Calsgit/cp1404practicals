@@ -12,6 +12,7 @@ DEFAULT_FILE = "projects.txt"
 def main():
     print("Welcome to Pythonic Project Management")
     projects = load_projects(True)
+    print(projects)
 
 
 def load_projects(is_on_startup=False):
@@ -22,9 +23,8 @@ def load_projects(is_on_startup=False):
         in_file.readline()  # read header
         for line in in_file:
             parts = line.strip().split('\t')
-            start_date = [int(number) for number in parts[1].split('/')]
             projects.append(
-                Project(parts[0], datetime.date(start_date[2], start_date[1], start_date[0]), int(parts[2]),
+                Project(parts[0], datetime.datetime.strptime(parts[1], "%d/%m/%Y").date(), int(parts[2]),
                         float(parts[3]), int(parts[4])))
     return projects
 
