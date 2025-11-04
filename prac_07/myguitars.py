@@ -1,28 +1,26 @@
 """
-Estimated time (for guitar, guitar_test, guitars): 25 min
-Elapsed time: 40 min
+Estimated time (prac 07): 30 min
+Elapsed time: TODO: Elapsed time
 """
 from guitar import Guitar
+
+IN_FILE = "guitars.csv"
 
 
 def main():
     print("My guitars!")
-    guitars = get_guitars_from_user()
+    guitars = get_guitars_from_file()
     display_guitars(guitars)
 
 
-def get_guitars_from_user():
-    """Repeatedly prompts user for guitar information until a blank name is entered."""
+def get_guitars_from_file():
+    """Open IN_FILE and extract csv data to create a list of guitar objects."""
     guitars = []
-    name = input("Name: ")
-    while name != "":
-        year = int(input("Year: "))
-        cost = float(input("Cost: $"))
-        guitar = Guitar(name, year, cost)
-        guitars.append(guitar)
-        print(guitar, "added.")
-        name = input("Name: ")
-    print()
+    with open(IN_FILE) as in_file:
+        in_file.readline()
+        for line in in_file:
+            parts = line.strip().split(',')
+            guitars.append(Guitar(parts[0], int(parts[1]), float(parts[2])))
     return guitars
 
 
@@ -30,7 +28,6 @@ def display_guitars(guitars):
     """Loop through a list of guitars and display their information."""
     max_name_length = max([len(guitar.name) for guitar in guitars])
     max_cost_length = max([len(str(guitar.cost)) for guitar in guitars])
-    print(max_name_length)
     print("These are my guitars:")
     for i, guitar in enumerate(guitars, 1):
         vintage_string = "(vintage)" if guitar.is_vintage() else ""
