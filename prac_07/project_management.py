@@ -40,6 +40,9 @@ def load_projects(is_on_startup=False):
     """Load projects from a specified file (or the default file on startup)."""
     projects = []
     file_name = DEFAULT_FILE if is_on_startup else input("")
+    if file_name == "":
+        print(f"Defaulting to {DEFAULT_FILE}")
+        file_name = DEFAULT_FILE
     with open(file_name, 'r') as in_file:
         in_file.readline()  # read header
         for line in in_file:
