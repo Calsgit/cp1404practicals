@@ -25,6 +25,8 @@ def main():
     while selection != 'q':
         if selection == 's':
             save_projects(projects)
+        elif selection == "d":
+            display_projects(projects)
         else:
             print("Invalid selection.")
         print(MENU_OPTIONS)
@@ -64,7 +66,15 @@ def save_projects(projects, preferred_file=""):
 
 
 def display_projects(projects):
-    pass  # TODO: display
+    """Display specified projects, dividing incomplete from complete ones."""
+    incomplete_projects = [project for project in projects if not project.is_complete()]
+    complete_projects = [project for project in projects if project.is_complete()]
+    print("Incomplete projects:")
+    for project in incomplete_projects:
+        print(f"\t{project}")
+    print("Completed projects:")
+    for project in complete_projects:
+        print(f"\t{project}")
 
 
 def filter_projects(projects):
