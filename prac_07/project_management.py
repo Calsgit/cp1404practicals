@@ -31,6 +31,7 @@ def main():
             display_projects(projects, 1)
         elif selection == "f":
             display_projects(projects)
+            filter_projects(projects)
         else:
             print("Invalid selection.")
         print(MENU_OPTIONS)
@@ -72,7 +73,7 @@ def save_projects(projects, preferred_file=""):
             out_file.write(save_string)
 
 
-def display_projects(projects, order_selection = 0):
+def display_projects(projects, order_selection=0):
     """Display specified projects. Ordering depends on selection:
     0 = Displays all projects with their index.
     1 = Separates incomplete and complete into different categories."""
@@ -91,7 +92,11 @@ def display_projects(projects, order_selection = 0):
 
 
 def filter_projects(projects):
-    pass  # TODO: filter by after input date
+    """Show only projects started on or after a specified date."""
+    filter_date = datetime.datetime.strptime(input("Show projects that start after date (dd/mm/yy): "),
+                                             "%d/%m/%Y").date()
+    for project in [project for project in projects if project.start_date >= filter_date]:
+        print(project)
 
 
 def add_project():
@@ -101,12 +106,13 @@ def add_project():
 def update_project(project):
     pass  # TODO: update selected project
 
+
 def get_valid_index(projects, message):
     """Prompt user for a list index until a valid one is given."""
-    index = int(input("Project choice: ")) # TODO: error checking on int
+    index = int(input("Project choice: "))  # TODO: error checking on int
     while 0 <= index < len(projects):
         print("Invalid option!")
-        index = int(input("Project choice: ")) # TODO: error checking on int
+        index = int(input("Project choice: "))  # TODO: error checking on int
     return index
 
 
