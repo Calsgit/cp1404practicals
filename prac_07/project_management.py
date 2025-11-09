@@ -23,7 +23,9 @@ def main():
     print(MENU_OPTIONS)
     selection = input(">>> ").lower()
     while selection != 'q':
-        if selection == 's':
+        if selection == 'l':
+            projects = load_projects()
+        elif selection == 's':
             save_projects(projects)
         elif selection == "d":
             display_projects(projects)
