@@ -56,9 +56,10 @@ def save_projects(projects, preferred_file=""):
             print("File must end with .txt!")
             preferred_file = input("What file would you like to save to? (Must end with .txt)\n>").lower()
     with open(preferred_file, 'w') as out_file:
-        out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage")
+        out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage\n")
         for project in projects:
-            save_string = f"{project.name}\t{project.start_date.day:02}/{project.start_date.month:02}/{project.start_date.year:04}\t{project.priority}\t{project.cost_estimate:.1f}\t{project.completion_percentage}"
+            end_of_file_string = "" if project == projects[-1] else "\n"
+            save_string = f"{project.name}\t{project.start_date.day:02}/{project.start_date.month:02}/{project.start_date.year:04}\t{project.priority}\t{project.cost_estimate:.1f}\t{project.completion_percentage}{end_of_file_string}"
             out_file.write(save_string)
 
 
