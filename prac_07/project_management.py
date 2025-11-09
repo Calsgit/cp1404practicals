@@ -1,6 +1,6 @@
 """
 Time Estimate: 40 min
-Time Elapsed:
+Time Elapsed: ~1 hr 40 min
 """
 import datetime
 
@@ -45,6 +45,7 @@ def main():
     selection = input(f"Would you like to save to {DEFAULT_FILE}? ").lower()
     if selection == "y" or selection == "yes":
         save_projects(projects, DEFAULT_FILE)
+    print("Thank you for using custom-built project management software.")
 
 
 def load_projects(is_on_startup=False):
@@ -77,6 +78,7 @@ def save_projects(projects, preferred_file=""):
             end_of_file_string = "" if project == projects[-1] else "\n"
             save_string = f"{project.name}\t{project.start_date.day:02}/{project.start_date.month:02}/{project.start_date.year:04}\t{project.priority}\t{project.cost_estimate:.1f}\t{project.completion_percentage}{end_of_file_string}"
             out_file.write(save_string)
+    print(f"{len(projects)} projects saved to {preferred_file}.")
 
 
 def display_projects(projects, order_selection=0):
@@ -126,10 +128,11 @@ def update_project(project):
     project.completion_percentage = project.completion_percentage if percentage_complete == -1 else percentage_complete
     project.priority = project.priority if priority == -1 else priority
 
+
 def get_valid_index(projects):
     """Prompt user for a list index until a valid one is given."""
     index = int(input("Project choice: "))  # TODO: error checking on int
-    while 0 <= index < len(projects):
+    while not (0 <= index < len(projects)):
         print("Invalid option!")
         index = int(input("Project choice: "))  # TODO: error checking on int
     return index
