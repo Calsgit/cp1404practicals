@@ -31,7 +31,7 @@ def main():
         selection = input(">>> ").lower()
     selection = input(f"Would you like to save to {DEFAULT_FILE}? ").lower()
     if selection == "y" or selection == "yes":
-        save_projects(DEFAULT_FILE)
+        save_projects(projects, DEFAULT_FILE)
 
 
 def load_projects(is_on_startup=False):
@@ -55,8 +55,11 @@ def save_projects(projects, preferred_file=""):
         while preferred_file[-4:] != ".txt":
             print("File must end with .txt!")
             preferred_file = input("What file would you like to save to? (Must end with .txt)\n>").lower()
-    # with open(preferred_file, 'w') as out_file:
-    #     out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage")
+    with open(preferred_file, 'w') as out_file:
+        out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage")
+        for project in projects:
+            save_string = f"{project.name}\t{project.start_date.day:02}/{project.start_date.month:02}/{project.start_date.year:04}\t{project.priority}\t{project.cost_estimate:.1f}\t{project.completion_percentage}"
+            out_file.write(save_string)
 
 
 def display_projects(projects):
