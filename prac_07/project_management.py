@@ -70,16 +70,22 @@ def save_projects(projects, preferred_file=""):
             out_file.write(save_string)
 
 
-def display_projects(projects):
-    """Display specified projects, dividing incomplete from complete ones."""
-    incomplete_projects = [project for project in projects if not project.is_complete()]
-    complete_projects = [project for project in projects if project.is_complete()]
-    print("Incomplete projects:")
-    for project in incomplete_projects:
-        print(f"\t{project}")
-    print("Completed projects:")
-    for project in complete_projects:
-        print(f"\t{project}")
+def display_projects(projects, order_selection):
+    """Display specified projects. Ordering depends on selection:
+    0 = Displays all projects with their index.
+    1 = Separates incomplete and complete into different categories."""
+    if order_selection == 1:
+        incomplete_projects = [project for project in projects if not project.is_complete()]
+        complete_projects = [project for project in projects if project.is_complete()]
+        print("Incomplete projects:")
+        for project in incomplete_projects:
+            print(f"\t{project}")
+        print("Completed projects:")
+        for project in complete_projects:
+            print(f"\t{project}")
+    else:
+        for index, project in enumerate(projects):
+            print(f"{index} {project}")
 
 
 def filter_projects(projects):
