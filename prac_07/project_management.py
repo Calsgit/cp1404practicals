@@ -28,6 +28,8 @@ def main():
         elif selection == 's':
             save_projects(projects)
         elif selection == "d":
+            display_projects(projects, 1)
+        elif selection == "f":
             display_projects(projects)
         else:
             print("Invalid selection.")
@@ -70,7 +72,7 @@ def save_projects(projects, preferred_file=""):
             out_file.write(save_string)
 
 
-def display_projects(projects, order_selection):
+def display_projects(projects, order_selection = 0):
     """Display specified projects. Ordering depends on selection:
     0 = Displays all projects with their index.
     1 = Separates incomplete and complete into different categories."""
@@ -98,6 +100,14 @@ def add_project():
 
 def update_project(project):
     pass  # TODO: update selected project
+
+def get_valid_index(projects, message):
+    """Prompt user for a list index until a valid one is given."""
+    index = int(input("Project choice: ")) # TODO: error checking on int
+    while 0 <= index < len(projects):
+        print("Invalid option!")
+        index = int(input("Project choice: ")) # TODO: error checking on int
+    return index
 
 
 if __name__ == '__main__':
