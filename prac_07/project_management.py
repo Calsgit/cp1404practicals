@@ -19,15 +19,23 @@ MENU_OPTIONS = """- (L)oad projects
 def main():
     print("Welcome to Pythonic Project Management")
     projects = load_projects(True)
+    print(f"Loaded {len(projects)} projects from {DEFAULT_FILE}")
     print(MENU_OPTIONS)
     selection = input(">>> ").lower()
     while selection != 'q':
         if selection == 's':
             save_projects(projects)
+        else:
+            print("Invalid selection.")
+        print(MENU_OPTIONS)
+        selection = input(">>> ").lower()
+    selection = input(f"Would you like to save to {DEFAULT_FILE}? ").lower()
+    if selection == "y" or selection == "yes":
+        save_projects(DEFAULT_FILE)
 
 
 def load_projects(is_on_startup=False):
-    """Load projects from a specified file (or the default file on startup)"""
+    """Load projects from a specified file (or the default file on startup)."""
     projects = []
     file_name = DEFAULT_FILE if is_on_startup else input("")
     with open(file_name, 'r') as in_file:
@@ -41,10 +49,14 @@ def load_projects(is_on_startup=False):
 
 
 def save_projects(projects, preferred_file=""):
+    """Save projects to a specified file (or the default file if unspecified)."""
     if preferred_file == "":
-        preferred_file = input(f"Would you like to save to {DEFAULT_FILE}? ").lower()
-    if preferred_file == "y" or "yes":
-        pass  # TODO: saving
+        preferred_file = input("What file would you like to save to? (Must end with .txt)\n>").lower()
+        while preferred_file[-4:] != ".txt":
+            print("File must end with .txt!")
+            preferred_file = input("What file would you like to save to? (Must end with .txt)\n>").lower()
+    # with open(preferred_file, 'w') as out_file:
+    #     out_file.write("Name	Start Date	Priority	Cost Estimate	Completion Percentage")
 
 
 def display_projects(projects):
