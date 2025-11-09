@@ -27,7 +27,7 @@ def main():
             projects = load_projects()
         elif selection == 's':
             save_projects(projects)
-        elif selection == "d":
+        elif selection == 'd':
             display_projects(projects, 1)
         elif selection == 'f':
             filter_projects(projects)
@@ -35,6 +35,9 @@ def main():
             new_project = add_project()
             projects.append(new_project)
             print(f"Project Added:\n{new_project}")
+        elif selection == 'u':
+            display_projects(projects)
+            update_project(projects[get_valid_index(projects)])
         else:
             print("Invalid selection.")
         print(MENU_OPTIONS)
@@ -112,12 +115,18 @@ def add_project():
     return Project(name, date, priority, cost_estimate, completion_percentage)
 
 
-
 def update_project(project):
-    pass  # TODO: update selected project
+    """Update the percentage and priority of the project.
+    Use the default value/s if user inputs nothing."""
+    print(project)
+    percentage_complete = input("New percentage: ")
+    percentage_complete = -1 if percentage_complete == "" else int(percentage_complete)
+    priority = input("New priority: ")
+    priority = -1 if priority == "" else int(priority)
+    project.completion_percentage = project.completion_percentage if percentage_complete == -1 else percentage_complete
+    project.priority = project.priority if priority == -1 else priority
 
-
-def get_valid_index(projects, message):
+def get_valid_index(projects):
     """Prompt user for a list index until a valid one is given."""
     index = int(input("Project choice: "))  # TODO: error checking on int
     while 0 <= index < len(projects):
