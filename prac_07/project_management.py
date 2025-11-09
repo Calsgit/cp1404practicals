@@ -29,9 +29,12 @@ def main():
             save_projects(projects)
         elif selection == "d":
             display_projects(projects, 1)
-        elif selection == "f":
-            display_projects(projects)
+        elif selection == 'f':
             filter_projects(projects)
+        elif selection == 'a':
+            new_project = add_project()
+            projects.append(new_project)
+            print(f"Project Added:\n{new_project}")
         else:
             print("Invalid selection.")
         print(MENU_OPTIONS)
@@ -100,7 +103,14 @@ def filter_projects(projects):
 
 
 def add_project():
-    pass  # TODO: add new project
+    """Return a new project with user-specified input"""
+    name = input("Name: ")
+    date = datetime.datetime.strptime(input("Date (dd/mm/yyyy): "), "%d/%m/%Y").date()
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    completion_percentage = int(input("Percent complete: "))
+    return Project(name, date, priority, cost_estimate, completion_percentage)
+
 
 
 def update_project(project):
