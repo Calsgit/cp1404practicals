@@ -21,18 +21,21 @@ class Convert_Miles_Km(App):
         return self.root
 
     def handle_up(self):
+        """Add 1 to the input, or set it to 1 if invalid."""
         try:
             self.root.ids.input_text.text = str(float(self.root.ids.input_text.text) + 1)
         except ValueError:
             self.root.ids.input_text.text = '1'
 
     def handle_down(self):
+        """Remove 1 from the input, or set it to -1 if invalid."""
         try:
             self.root.ids.input_text.text = str(float(self.root.ids.input_text.text) - 1)
         except ValueError:
             self.root.ids.input_text.text = '-1'
 
     def handle_convert(self):
+        """Calculate the conversion from miles to kilometres and display in the output."""
         try:
             self.output = str(float(self.root.ids.input_text.text) * MILES_TO_KM_RATIO)
         except ValueError:
