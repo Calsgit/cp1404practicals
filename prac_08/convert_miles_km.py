@@ -1,0 +1,45 @@
+"""Convert miles to Km
+Time estimate: 20 min
+Time elapsed: 40 minutes (blame the brackets)
+"""
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.properties import StringProperty
+
+MILES_TO_KM_RATIO = 1.60934
+
+
+class Convert_Miles_Km(App):
+    """Convert_Miles_Km is an app for converting a value in miles to kilometres."""
+    output = StringProperty()  # I don't understand this
+
+    def build(self):
+        """Build the kivy app from the corresponding kv file."""
+        self.title = "Convert miles to kilometres"
+        self.output = '0.0'
+        self.root = Builder.load_file('convert_miles_km.kv')
+        return self.root
+
+    def handle_up(self):
+        """Add 1 to the input, or set it to 1 if invalid."""
+        try:
+            self.root.ids.input_text.text = str(float(self.root.ids.input_text.text) + 1)
+        except ValueError:
+            self.root.ids.input_text.text = '1'
+
+    def handle_down(self):
+        """Remove 1 from the input, or set it to -1 if invalid."""
+        try:
+            self.root.ids.input_text.text = str(float(self.root.ids.input_text.text) - 1)
+        except ValueError:
+            self.root.ids.input_text.text = '-1'
+
+    def handle_convert(self):
+        """Calculate the conversion from miles to kilometres and display in the output."""
+        try:
+            self.output = str(float(self.root.ids.input_text.text) * MILES_TO_KM_RATIO)
+        except ValueError:
+            self.output = '0.0'
+
+
+Convert_Miles_Km().run()
