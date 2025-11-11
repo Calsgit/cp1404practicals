@@ -9,12 +9,12 @@ BoxLayout:
             orientation: 'vertical'
             Button:
                 text: 'Up'
-                on_press: app.handle_up
+                on_press: app.handle_up()
             Button:
                 text: 'Down'
-                on_press: app.handle_down
+                on_press: app.handle_down()
     Button:
         text: 'Convert miles to km'
-        on_press: app.handle_convert
+        on_press: app.handle_convert()
     Label:
         text: app.output
