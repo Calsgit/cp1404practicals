@@ -1,6 +1,6 @@
 """Dynamic labels
 Time estimate: 20 min
-Time elapsed:
+Time elapsed: 30 min
 """
 from kivy.app import App
 from kivy.lang import Builder
