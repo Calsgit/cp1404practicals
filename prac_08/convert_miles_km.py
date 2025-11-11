@@ -16,7 +16,7 @@ class Convert_Miles_Km(App):
     def build(self):
         """Build the kivy app from the corresponding kv file."""
         self.title = "Convert miles to kilometres"
-        self.output = '0'
+        self.output = '0.0'
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
@@ -24,16 +24,19 @@ class Convert_Miles_Km(App):
         try:
             self.root.ids.input_text.text = str(float(self.root.ids.input_text.text) + 1)
         except ValueError:
-            self.root.ids.input_text.text = '0'
+            self.root.ids.input_text.text = '1'
 
     def handle_down(self):
         try:
             self.root.ids.input_text.text = str(float(self.root.ids.input_text.text) - 1)
         except ValueError:
-            self.root.ids.input_text.text = '0'
+            self.root.ids.input_text.text = '-1'
 
     def handle_convert(self):
-        self.output = str(float(self.root.ids.input_text.text) * MILES_TO_KM_RATIO)
+        try:
+            self.output = str(float(self.root.ids.input_text.text) * MILES_TO_KM_RATIO)
+        except ValueError:
+            self.output = '0.0'
 
 
 Convert_Miles_Km().run()

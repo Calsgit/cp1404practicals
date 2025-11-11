@@ -4,6 +4,7 @@ BoxLayout:
         TextInput:
             id: input_text
             text: '0'
+            on_text: app.handle_convert()
         BoxLayout:
             size_hint_x: 0.2
             orientation: 'vertical'
@@ -13,8 +14,8 @@ BoxLayout:
             Button:
                 text: 'Down'
                 on_press: app.handle_down()
-    Button:
-        text: 'Convert miles to km'
-        on_press: app.handle_convert()
+#    Button:
+#        text: 'Convert miles to km'
+#        on_press: app.handle_convert()
     Label:
         text: app.output
