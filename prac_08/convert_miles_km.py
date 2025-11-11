@@ -1,6 +1,6 @@
 """Convert miles to Km
 Time estimate: 20 min
-Time elapsed:
+Time elapsed: 40 minutes (blame the brackets)
 """
 from kivy.app import App
 from kivy.lang import Builder
