@@ -2,7 +2,7 @@ from prac_09.car import Car
 from random import randint
 
 
-class Unreliable_Car(Car):
+class UnreliableCar(Car):
     """Specialised version of Car that may randomly not drive"""
 
     def __init__(self, name, fuel, reliability):
