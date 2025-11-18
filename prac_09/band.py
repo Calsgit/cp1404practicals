@@ -15,3 +15,9 @@ class Band:
     def add(self, member):
         """Add a member to the band's member list."""
         self.members.append(member)
+
+    def play(self):
+        the_big_band_string = ""
+        for member in self.members:
+            the_big_band_string += f"{member.play()}\n"
+        return the_big_band_string
