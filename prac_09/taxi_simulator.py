@@ -16,7 +16,16 @@ def main():
 
     print("Let's drive!")
     print(MENU)
-    selection = input(">>> ")
+    selection = input(">>> ").lower
+    while selection != 'q':
+        if selection == 'c':
+            display_taxis_by_index()
+            current_taxi = get_valid_taxi_index(taxis)
 
+
+def get_valid_taxi_index(taxis):
+    """Display all loaded taxis and their index, then get user input for one."""
+    for index, taxi in enumerate(taxis):
+        print(f"{index} - {taxi}")
 
 main()
