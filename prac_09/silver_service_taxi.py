@@ -13,3 +13,6 @@ class SilverServiceTaxi(Taxi):
     def __str__(self):
         """Return a string like taxi with added flagfall."""
         return f"{super().__str__()}, plus flagfall of ${self.flagfall:.2}"
+
+    def get_fare(self):
+        return super().get_fare() + self.flagfall
