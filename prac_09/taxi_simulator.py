@@ -13,7 +13,7 @@ def main():
     """Display various menu options for user to interact with to drive their virtual taxis."""
     current_taxi = None
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
-
+    total_bill = 0.00
     print("Let's drive!")
     print(MENU)
     selection = input(">>> ").lower
@@ -22,9 +22,8 @@ def main():
             display_taxis_by_index(taxis)
             index = get_valid_taxi_index(taxis)
             current_taxi = taxis[index]
-
         if selection == 'd':
-            pass
+            total_bill += drive_taxi(current_taxi)
         else:
             print("Invalid option")
         try:
@@ -35,11 +34,12 @@ def main():
         selection = input(">>> ").lower
 
 
-def drive_taxi(current_taxi):
-    current_taxi.start_fare()
+def drive_taxi(taxi):
+    taxi.start_fare()
     distance = float(input("Drive how far? "))
-    current_taxi.drive(distance)
-
+    taxi.drive(distance)
+    print(f"Your {taxi.name} will cost you ${taxi.get_fare:.2f}")
+    return taxi.get_fare()
 
 
 def display_taxis_by_index(taxis):
