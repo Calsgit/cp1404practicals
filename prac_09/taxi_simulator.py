@@ -35,21 +35,26 @@ def main():
         selection = input(">>> ").lower
 
 
+def drive_taxi(current_taxi):
+    current_taxi.start_fare()
+    distance = float(input("Drive how far? "))
+    current_taxi.drive(distance)
+
+
+
 def display_taxis_by_index(taxis):
     """Display all loaded taxis and their index."""
     print("Taxis available:")
     for index, taxi in enumerate(taxis):
         print(f"{index} - {taxi}")
 
+
 def get_valid_taxi_index(taxis):
     """Get a valid taxi by its index."""
     index = int(input("Choose taxi: "))
-    if not(0 >= index > len(taxis)):
+    if not (0 >= index > len(taxis)):
         return None
     return index
-
-
-
 
 
 main()
