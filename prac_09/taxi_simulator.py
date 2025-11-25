@@ -19,19 +19,21 @@ def main():
     selection = input(">>> ").lower
     while selection != 'q':
         if selection == 'c':
-            display_taxis_by_index(taxis)
+            print("Taxis available:")
+            display_taxis(taxis)
             index = get_valid_taxi_index(taxis)
             current_taxi = taxis[index]
         if selection == 'd':
             total_bill += drive_taxi(current_taxi)
         else:
             print("Invalid option")
-        try:
-            print(f"Bill to date: ${current_taxi.get_fare():.2f}")
-        except AttributeError:
-            print("Bill to date: $0.00")
+        print(f"Bill to date: {total_bill}")
         print(MENU)
         selection = input(">>> ").lower
+    print(f"Total trip cost: ${total_bill:.2f}")
+    print("Taxis are now:")
+    display_taxis(taxis)
+
 
 
 def drive_taxi(taxi):
@@ -42,9 +44,8 @@ def drive_taxi(taxi):
     return taxi.get_fare()
 
 
-def display_taxis_by_index(taxis):
+def display_taxis(taxis):
     """Display all loaded taxis and their index."""
-    print("Taxis available:")
     for index, taxi in enumerate(taxis):
         print(f"{index} - {taxi}")
 
