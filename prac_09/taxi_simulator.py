@@ -20,7 +20,19 @@ def main():
     while selection != 'q':
         if selection == 'c':
             display_taxis_by_index(taxis)
-            current_taxi = get_valid_taxi_index(taxis)
+            index = get_valid_taxi_index(taxis)
+            current_taxi = taxis[index]
+
+        if selection == 'd':
+            pass
+        else:
+            print("Invalid option")
+        try:
+            print(f"Bill to date: ${current_taxi.get_fare():.2f}")
+        except AttributeError:
+            print("Bill to date: $0.00")
+        print(MENU)
+        selection = input(">>> ").lower
 
 
 def display_taxis_by_index(taxis):
@@ -31,18 +43,9 @@ def display_taxis_by_index(taxis):
 
 def get_valid_taxi_index(taxis):
     """Get a valid taxi by its index."""
-    valid = False
-    index = input("Choose taxi: ")
-    while not valid:
-        try:
-            if 0 <= int(index) < len(taxis):
-                valid = True
-            else:
-                print("Invalid taxi choice")
-                index = input("Choose taxi: ")
-        except TypeError:
-            print("Invalid taxi choice")
-            index = input("Choose taxi: ")
+    index = int(input("Choose taxi: "))
+    if not(0 >= index > len(taxis)):
+        return None
     return index
 
 
