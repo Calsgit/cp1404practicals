@@ -31,13 +31,15 @@ def format_sentence(sentence):
     """
     Format a string as a sentence by capitalising the first letter and adding a period.
     >>> format_sentence("hello")
-    "Hello."
+    'Hello.'
     >>> format_sentence("It is an ex parrot.")
-    "It is an ex parrot."
+    'It is an ex parrot.'
     >>> format_sentence("hello world.")
-    "Hello world."
+    'Hello world.'
     """
-    pass
+    end_of_string_character = "" if sentence[-1] == '.' else '.'
+    return f"{sentence[0].upper()}{sentence[1:]}{end_of_string_character}"
+
 
 
 def run_tests():
