@@ -19,13 +19,34 @@ def main():
     selection = input(">>> ").lower
     while selection != 'q':
         if selection == 'c':
-            display_taxis_by_index()
+            display_taxis_by_index(taxis)
             current_taxi = get_valid_taxi_index(taxis)
 
 
-def get_valid_taxi_index(taxis):
-    """Display all loaded taxis and their index, then get user input for one."""
+def display_taxis_by_index(taxis):
+    """Display all loaded taxis and their index."""
+    print("Taxis available:")
     for index, taxi in enumerate(taxis):
         print(f"{index} - {taxi}")
+
+def get_valid_taxi_index(taxis):
+    """Get a valid taxi by its index."""
+    valid = False
+    index = input("Choose taxi: ")
+    while not valid:
+        try:
+            if 0 <= int(index) < len(taxis):
+                valid = True
+            else:
+                print("Invalid taxi choice")
+                index = input("Choose taxi: ")
+        except TypeError:
+            print("Invalid taxi choice")
+            index = input("Choose taxi: ")
+    return index
+
+
+
+
 
 main()
