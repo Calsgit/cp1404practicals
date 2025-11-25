@@ -27,6 +27,18 @@ def is_long_word(word, length=5):
     """
     return len(word) >= length
 
+def format_sentence(sentence):
+    """
+    Format a string as a sentence by capitalising the first letter and adding a period.
+    >>> format_sentence("hello")
+    "Hello."
+    >>> format_sentence("It is an ex parrot.")
+    "It is an ex parrot."
+    >>> format_sentence("hello world.")
+    "Hello world."
+    """
+    pass
+
 
 def run_tests():
     """Run the tests on the functions."""
@@ -54,9 +66,6 @@ def run_tests():
 run_tests()
 
 doctest.testmod()
-
-# TODO: 4. Fix the failing is_long_word function
-# (Don't change the tests, change the function!)
 
 # TODO: 5. Write and test a function to format a phrase as a sentence,
 # starting with a capital and ending with a single full stop.
