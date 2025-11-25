@@ -7,13 +7,14 @@ def main():
     while query != "":
         result = ""
         try:
-            result = wikipedia.summary(query, auto_suggest=False)
+            print(wikipedia.summary(query, auto_suggest=False))
         except DisambiguationError as disambiguation:
-            result = disambiguation.options
+            print("We need a more specific title. Try one of the following, or a new search:")
+            print(disambiguation.options)
         except PageError:
-            result = "no does not exist"
-        print(result)
-        query = input("Enter page title: ")
+            print(f"Page id {query} does not match any pages. Try another id!")
+        query = input("\nEnter page title: ")
+    print("Thank you.")
 
 
 main()
